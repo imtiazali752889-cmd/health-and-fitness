@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Health Tips - FitLife</title>
+
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --accent: #4895ef;
+      --dark: #0a001f;
+      --success: #10b981;
+      --info: #0dcaf0;
+      --warning: #f59e0b;
+    }
+    body { font-family: 'Poppins', sans-serif; background: #f8f9ff; }
+
+    /* Navbar */
+    .navbar { background: rgba(10,0,31,0.9) !important; backdrop-filter: blur(12px); }
+    .navbar.scrolled { background: rgba(10,0,31,0.98) !important; padding: 0.5rem 0 !important; }
+    .nav-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: 0; left: 50%; background: var(--accent); transition: 0.4s; }
+    .nav-link:hover::after { width: 100%; left: 0; }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1498837167924-0500cb7c8a7e?q=80&w=2070') center/cover no-repeat;
+      padding: 140px 0 100px;
+      color: white;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 4.8rem; font-weight: 800; }
+
+    /* Tip Cards */
+    .tip-card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      height: 100%;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      transition: all 0.4s;
+      border: 1px solid #eee;
+    }
+    .tip-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(67,97,238,0.18);
+    }
+    .tip-icon {
+      font-size: 3rem;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    /* Daily Tip Carousel */
+    .daily-tip {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border-radius: 30px;
+      padding: 50px 30px;
+      text-align: center;
+    }
+    .carousel-indicators [data-bs-target] {
+      background-color: white;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    footer { background: var(--dark); color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="index.html"><span style="color:#4895ef;">Fit</span>Life</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+          <li class="nav-item"><a class="nav-link" href="diet.html">Diet Plans</a></li>
+          <li class="nav-item"><a class="nav-link active" href="health-tips.html">Health Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="display-2">Daily Health Tips</h1>
+      <p class="lead fs-3 mt-3">Small habits. Massive results.</p>
+    </div>
+  </section>
+
+  <!-- Daily Tip of the Day (Carousel) -->
+  <section class="py-5 bg-light">
+    <div class="container py-5">
+      <h2 class="text-center fw-bold mb-5 display-5">Tip of the Day</h2>
+      <div id="dailyTipCarousel" class="carousel slide daily-tip mx-auto" style="max-width: 800px;" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#dailyTipCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#dailyTipCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#dailyTipCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <h3>Drink 500ml water right after waking up</h3>
+            <p class="fs-5 mt-3">Rehydrates your body, boosts metabolism by 30%, and improves brain function.</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Walk 10 minutes after every meal</h3>
+            <p class="fs-5 mt-3">Lowers blood sugar spikes, improves digestion, and burns extra calories effortlessly.</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Go to bed at the same time every night</h3>
+            <p class="fs-5 mt-3">Regulates your circadian rhythm → deeper sleep → faster recovery & fat loss.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Health Tips Grid -->
+  <section class="py-5">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold">Proven Health Tips That Actually Work</h2>
+        <p class="lead text-muted">Backed by science · Easy to apply · Life-changing results</p>
+      </div>
+
+      <div class="row g-5">
+
+        <!-- Sleep -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tip-card text-center">
+            <div class="tip-icon"><i class="bi bi-moon-stars-fill"></i></div>
+            <h4 class="fw-bold">Sleep Better</h4>
+            <ul class="text-start mt-3 text-muted">
+              <li>No screens 1 hour before bed</li>
+              <li>Keep bedroom cool (18–20°C)</li>
+              <li>Sleep & wake at same time daily</li>
+              <li>Magnesium or chamomile tea helps</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Hydration -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tip-card text-center">
+            <div class="tip-icon"><i class="bi bi-droplet-fill"></i></div>
+            <h4 class="fw-bold">Stay Hydrated</h4>
+            <ul class="text-start mt-3 text-muted">
+              <li>Drink 3–4 liters per day</li>
+              <li>Add lemon or cucumber for taste</li>
+              <li>Drink before you're thirsty</li>
+              <li>Track with a marked bottle</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Stress -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tip-card text-center">
+            <div class="tip-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+            <h4 class="fw-bold">Reduce Stress</h4>
+            <ul class="text-start mt-3 text-muted">
+              <li>5-minute breathing (4-7-8 method)</li>
+              <li>Journal 3 things you're grateful for</li>
+              <li>Spend 10 min in nature daily</li>
+              <li>Limit social media to 30 min/day</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Daily Movement -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tip-card text-center">
+            <div class="tip-icon"><i class="bi bi-activity"></i></div>
+            <h4 class="fw-bold">Move More</h4>
+            <ul class="text-start mt-3 text-muted">
+              <li>10,000 steps = gold standard</li>
+              <li>Stand up every 30 minutes</li>
+              <li>Take stairs instead of elevator</li>
+              <li>Dance while cooking!</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Immunity -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tip-card text-center">
+            <div class="tip-icon"><i class="bi bi-shield-fill-check"></i></div>
+            <h4 class="fw-bold">Boost Immunity</h4>
+            <ul class="text-start mt-3 text-muted">
+              <li>Vitamin C: oranges, bell peppers</li>
+              <li>Zinc: nuts, seeds, eggs</li>
+              <li>Get morning sunlight (10–15 min)</li>
+              <li>7–9 hours sleep every night</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Habits -->
+        <div class="col-md-6 col-lg-4">
+          <div class="tip-card text-center">
+            <div class="tip-icon"><i class="bi bi-check2-circle"></i></div>
+            <h4 class="fw-bold">Build Habits</h4>
+            <ul class="text-start mt-3 text-muted">
+              <li>Start tiny (2-min rule)</li>
+              <li>Habit stack (after coffee → stretch)</li>
+              <li>Track with app or calendar</li>
+              <li>Celebrate small wins daily</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-5 bg-light">
+    <div class="container text-center py-5">
+      <h2 class="display-5 fw-bold">Want a new health tip in your inbox every morning?</h2>
+      <p class="lead mb-4">Join 25,000+ people getting daily motivation</p>
+      <form class="d-inline-flex gap-2 max-w-500 mx-auto">
+        <input type="email" class="form-control form-control-lg rounded-pill" placeholder="you@example.com" style="min-width: 300px;">
+        <button class="btn btn-primary btn-lg rounded-pill px-5">Send Me Tips</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 text-white">
+    <div class="container text-center">
+      <p class="mb-1 fs-5">© 2025 <strong>FitLife</strong> • Your daily dose of wellness</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Auto-rotate carousel every 6 seconds
+    const carousel = new bootstrap.Carousel('#dailyTipCarousel', {
+      interval: 6000,
+      wrap: true
+    });
+  </script>
+</body>
+</html>

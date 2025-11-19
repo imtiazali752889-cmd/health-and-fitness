@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - FitLife</title>
+
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --accent: #4895ef;
+      --dark: #0a001f;
+    }
+    body { font-family: 'Poppins', sans-serif; background: #f8f9ff; }
+
+    /* Navbar */
+    .navbar { background: rgba(10,0,31,0.9) !important; backdrop-filter: blur(12px); }
+    .navbar.scrolled { background: rgba(10,0,31,0.98) !important; padding: 0.5rem 0 !important; }
+    .nav-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: 0; left: 50%; background: var(--accent); transition: 0.4s; }
+    .nav-link:hover::after { width: 100%; left: 0; }
+
+    /* Hero */
+    .page-hero {
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+                  url('https://images.unsplash.com/photo-1571019613712-36c3b305287a?q=80&w=2070') center/cover;
+      padding: 140px 0 100px;
+      color: white;
+    }
+    .page-hero h1 { font-size: 4.8rem; font-weight: 800; }
+
+    /* Contact Cards */
+    .contact-card {
+      background: white;
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      transition: all 0.4s;
+    }
+    .contact-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(67,97,238,0.18);
+    }
+    .contact-icon {
+      font-size: 3rem;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    /* Form */
+    .form-control, .form-select {
+      border-radius: 15px;
+      padding: 14px 20px;
+      border: 1.5px solid #ddd;
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(67,97,238,0.15);
+    }
+    .btn-send {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      border: none;
+      padding: 16px 50px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* FAQ */
+    .accordion-button {
+      font-weight: 600;
+      background: #f1f5ff;
+    }
+    .accordion-button:not(.collapsed) {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+    }
+
+    footer { background: var(--dark); color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="index.html"><span style="color:#4895ef;">Fit</span>Life</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+          <li class="nav-item"><a class="nav-link" href="diet.html">Diet Plans</a></li>
+          <li class="nav-item"><a class="nav-link" href="health-tips.html">Health Tips</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero text-center">
+    <div class="container">
+      <h1>We’re Here to Help</h1>
+      <p class="lead fs-3 mt-3">Questions? Suggestions? Just say hi!</p>
+    </div>
+  </section>
+
+  <!-- Quick Contact Cards -->
+  <section class="py-5 bg-light">
+    <div class="container py-5">
+      <div class="row g-4 text-center">
+        <div class="col-md-4">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+            <h5>Email Us</h5>
+            <p class="text-muted">support@fitlife.com</p>
+            <a href="mailto:support@fitlife.com" class="btn btn-outline-primary btn-sm rounded-pill">Send Email</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
+            <h5>WhatsApp</h5>
+            <p class="text-muted">+1 (555) 123-4567</p>
+            <a href="https://wa.me/15551234567" target="_blank" class="btn btn-success btn-sm rounded-pill">Message Now</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="bi bi-instagram"></i></div>
+            <h5>Instagram DM</h5>
+            <p class="text-muted">@fitlife.official</p>
+            <a href="https://instagram.com/fitlife.official" target="_blank" class="btn btn-danger btn-sm rounded-pill">Follow & DM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form + Map -->
+  <section class="py-5">
+    <div class="container py-5">
+      <div class="row g-5">
+        <!-- Form -->
+        <div class="col-lg-7">
+          <h2 class="fw-bold mb-4">Send Us a Message</h2>
+          <form action="https://formspree.io/f/your-form-id" method="POST"> <!-- Replace with your Formspree/Netlify link -->
+            <div class="row g-4">
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" name="_replyto" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="col-12">
+                <input type="text" name="subject" class="form-control" placeholder="Subject">
+              </div>
+              <div class="col-12">
+                <textarea name="message" class="form-control" rows="6" placeholder="Your Message..." required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-send text-white">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Map -->
+        <div class="col-lg-5">
+          <h2 class="fw-bold mb-4">Find Us</h2>
+          <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.158308694!2d-74.119763!3d40.697403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d23f7d8d%3A0x8b8f5e0d7e7e7e7e!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1700000000000" 
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section class="py-5 bg-light">
+    <div class="container py-5">
+      <h2 class="text-center fw-bold mb-5 display-5">Frequently Asked Questions</h2>
+      <div class="accordion mx-auto" style="max-width: 800px;" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Are the diet plans free?</button></h2>
+          <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Yes! All basic plans are 100% free. Premium personalized plans coming soon.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Can beginners follow the workouts?</button></h2>
+          <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Absolutely! Every exercise has beginner modifications and video guides.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">Do you offer personal coaching?</button></h2>
+          <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Yes! Reply to this message or email us to get 1-on-1 coaching options.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 text-white">
+    <div class="container text-center">
+      <p class="mb-1 fs-5">© 2025 <strong>FitLife</strong> • We're always here for you</p>
+      <p class="small mt-3">
+        <a href="#" class="text-white mx-2">Privacy Policy</a> |
+        <a href="#" class="text-white mx-2">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>

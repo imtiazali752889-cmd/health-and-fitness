@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercises - FitLife</title>
+
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --accent: #4895ef;
+      --dark: #0a001f;
+    }
+    body { font-family: 'Poppins', sans-serif; background: #f9fbff; }
+
+    /* Navbar - same as homepage */
+    .navbar { background: rgba(10,0,31,0.9) !important; backdrop-filter: blur(12px); }
+    .navbar.scrolled { background: rgba(10,0,31,0.98) !important; padding: 0.5rem 0 !important; }
+    .nav-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: 0; left: 50%; background: var(--accent); transition: 0.4s; }
+    .nav-link:hover::after { width: 100%; left: 0; }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1518614368383-3f1b5d7be297?q=80&w=2070') center/cover;
+      padding: 120px 0 80px;
+      color: white;
+    }
+    .page-hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+    }
+
+    /* Filter Tabs */
+    .nav-tabs .nav-link {
+      border: none;
+      font-weight: 600;
+      color: #666;
+      padding: 15px 30px;
+      border-radius: 50px;
+      margin: 0 8px;
+    }
+    .nav-tabs .nav-link.active {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: white !important;
+    }
+
+    /* Exercise Card */
+    .exercise-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: all 0.4s;
+    }
+    .exercise-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(67,97,238,0.18);
+    }
+    .exercise-img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .badge-difficulty {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .play-icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(67,97,238,0.9);
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      opacity: 0;
+      transition: 0.4s;
+    }
+    .exercise-card:hover .play-icon { opacity: 1; }
+
+    /* Footer */
+    footer { background: var(--dark); color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="index.html"><span style="color:#4895ef;">Fit</span>Life</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="exercises.html">Exercises</a></li>
+          <li class="nav-item"><a class="nav-link" href="diet.html">Diet Plans</a></li>
+          <li class="nav-item"><a class="nav-link" href="health-tips.html">Health Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero text-center">
+    <div class="container">
+      <h1 class="display-2">Exercise Library</h1>
+      <p class="lead fs-3">200+ workouts • Video guides • Beginner to advanced</p>
+      <div class="mt-4">
+        <input type="text" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="🔍 Search exercises (e.g. push ups, squats, abs...)" style="max-width: 600px; margin: 0 auto;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Tabs -->
+  <section class="py-5 bg-white border-bottom">
+    <div class="container">
+      <ul class="nav nav-tabs justify-content-center border-0" id="exerciseTabs" role="tablist">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#all">All Workouts</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#beginner">Beginner</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#fatloss">Fat Loss</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#muscle">Build Muscle</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#home">No Equipment</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Exercises Grid -->
+  <section class="py-5">
+    <div class="container">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="all">
+          <div class="row g-4">
+
+            <!-- Exercise 1 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="exercise-card position-relative">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800" class="exercise-img" alt="Push Ups">
+                <span class="badge bg-success badge-difficulty">Beginner</span>
+                <div class="play-icon text-white"><i class="bi bi-play-fill"></i></div>
+                <div class="p-4">
+                  <h5 class="fw-bold">Push-Ups (Chest & Triceps)</h5>
+                  <p class="text-muted mb-2">Duration: 3 sets × 12–15 reps</p>
+                  <div class="d-flex justify-content-between text-small">
+                    <span><i class="bi bi-stopwatch"></i> 10 min</span>
+                    <span><i class="bi bi-fire"></i> 80 kcal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exercise 2 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="exercise-card position-relative">
+                <img src="https://images.unsplash.com/photo-1599058917212-d75008983f01?q=80&w=800" class="exercise-img" alt="Squats">
+                <span class="badge bg-success badge-difficulty">Beginner</span>
+                <div class="play-icon text-white"><i class="bi bi-play-fill"></i></div>
+                <div class="p-4">
+                  <h5 class="fw-bold">Bodyweight Squats</h5>
+                  <p class="text-muted mb-2">Duration: 4 sets × 20 reps</p>
+                  <div class="d-flex justify-content-between text-small">
+                    <span><i class="bi bi-stopwatch"></i> 12 min</span>
+                    <span><i class="bi bi-fire"></i> 120 kcal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exercise 3 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="exercise-card position-relative">
+                <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=800" class="exercise-img" alt="Deadlift">
+                <span class="badge bg-warning badge-difficulty">Intermediate</span>
+                <div class="play-icon text-white"><i class="bi bi-play-fill"></i></div>
+                <div class="p-4">
+                  <h5 class="fw-bold">Barbell Deadlift</h5>
+                  <p class="text-muted mb-2">Duration: 4 sets × 8–10 reps</p>
+                  <div class="d-flex justify-content-between text-small">
+                    <span><i class="bi bi-stopwatch"></i> 20 min</span>
+                    <span><i class="bi bi-fire"></i> 200 kcal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add more exercises as needed... -->
+            <!-- Repeat the same card structure with different images & info -->
+
+            <div class="col-md-6 col-lg-4">
+              <div class="exercise-card position-relative">
+                <img src="https://images.unsplash.com/photo-1570545887591-720f7d8ec9e7?q=80&w=800" class="exercise-img" alt="Plank">
+                <span class="badge bg-success badge-difficulty">Beginner</span>
+                <div class="play-icon text-white"><i class="bi bi-play-fill"></i></div>
+                <div class="p-4">
+                  <h5 class="fw-bold">Plank Challenge</h5>
+                  <p class="text-muted mb-2">Duration: Hold 30–90 sec</p>
+                  <div class="d-flex justify-content-between text-small">
+                    <span><i class="bi bi-stopwatch"></i> 5 min</span>
+                    <span><i class="bi bi-fire"></i> 50 kcal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="exercise-card position-relative">
+                <img src="https://images.unsplash.com/photo-1583454110507-cf880ba70e3b?q=80&w=800" class="exercise-img" alt="Burpees">
+                <span class="badge bg-danger badge-difficulty">Advanced</span>
+                <div class="play-icon text-white"><i class="bi bi-play-fill"></i></div>
+                <div class="p-4">
+                  <h5 class="fw-bold">Burpees (Full Body)</h5>
+                  <p class="text-muted mb-2">Duration: 4 rounds × 15 reps</p>
+                  <div class="d-flex justify-content-between text-small">
+                    <span><i class="bi bi-stopwatch"></i> 15 min</span>
+                    <span><i class="bi bi-fire"></i> 250 kcal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <div class="exercise-card position-relative">
+                <img src="https://images.unsplash.com/photo-1603287681832-2c0f1298a58c?q=80&w=800" class="exercise-img" alt="Pull Ups">
+                <span class="badge bg-danger badge-difficulty">Advanced</span>
+                <div class="play-icon text-white"><i class="bi bi-play-fill"></i></div>
+                <div class="p-4">
+                  <h5 class="fw-bold">Pull-Ups / Chin-Ups</h5>
+                  <p class="text-muted mb-2">Duration: 4 sets × max reps</p>
+                  <div class="d-flex justify-content-between text-small">
+                    <span><i class="bi bi-stopwatch"></i> 18 min</span>
+                    <span><i class="bi bi-fire"></i> 180 kcal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="text-center mt-5">
+            <button class="btn btn-primary btn-lg px-5 rounded-pill">Load More Exercises</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 text-white">
+    <div class="container text-center">
+      <p class="mb-1 fs-5">© 2025 <strong>FitLife</strong> • Made with ❤️ for a healthier you</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>

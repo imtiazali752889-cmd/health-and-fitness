@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diet Plans - FitLife</title>
+
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --accent: #4895ef;
+      --dark: #0a001f;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+    body { font-family: 'Poppins', sans-serif; background: #f8f9ff; }
+
+    /* Navbar - same as before */
+    .navbar { background: rgba(10,0,31,0.9) !important; backdrop-filter: blur(12px); }
+    .navbar.scrolled { background: rgba(10,0,31,0.98) !important; padding: 0.5rem 0 !important; }
+    .nav-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: 0; left: 50%; background: var(--accent); transition: 0.4s; }
+    .nav-link:hover::after { width: 100%; left: 0; }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1498837167924-0500cb7c8a7e?q=80&w=2070') center/cover no-repeat;
+      padding: 130px 0 90px;
+      color: white;
+    }
+    .page-hero h1 { font-size: 4.5rem; font-weight: 800; }
+
+    /* Tabs */
+    .nav-tabs .nav-link {
+      border: none;
+      font-weight: 600;
+      color: #555;
+      padding: 14px 32px;
+      border-radius: 50px;
+      margin: 0 10px;
+      transition: all 0.3s;
+    }
+    .nav-tabs .nav-link.active {
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: white !important;
+      box-shadow: 0 10px 20px rgba(67,97,238,0.3);
+    }
+
+    /* Diet Plan Card */
+    .diet-card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+      transition: all 0.4s;
+    }
+    .diet-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(67,97,238,0.2);
+    }
+    .diet-img {
+      height: 220px;
+      object-fit: cover;
+    }
+    .macro-bar {
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #eee;
+    }
+    .macro-protein { width: 40%; background: #10b981; }
+    .macro-carbs   { width: 35%; background: #f59e0b; }
+    .macro-fat     { width: 25%; background: #3b82f6; }
+
+    /* Meal Table Preview */
+    .meal-table th { background: var(--primary); color: white; }
+    .meal-table td { vertical-align: middle; }
+
+    footer { background: var(--dark); color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="index.html"><span style="color:#4895ef;">Fit</span>Life</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+          <li class="nav-item"><a class="nav-link active" href="diet.html">Diet Plans</a></li>
+          <li class="nav-item"><a class="nav-link" href="health-tips.html">Health Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero text-center">
+    <div class="container">
+      <h1 class="display-2">Personalized Diet Plans</h1>
+      <p class="lead fs-3 mb-4">Science-based meals • Track macros • Real results</p>
+      <a href="#plans" class="btn btn-primary btn-lg px-5 rounded-pill">Find Your Perfect Plan</a>
+    </div>
+  </section>
+
+  <!-- Goal Tabs -->
+  <section class="py-5 bg-white border-bottom">
+    <div class="container">
+      <ul class="nav nav-tabs justify-content-center" id="dietTabs">
+        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#all">All Plans</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#lose">Lose Fat</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#muscle">Build Muscle</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#maintain">Maintain Weight</a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#veggie">Vegetarian</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Diet Plans Grid -->
+  <section class="py-5" id="plans">
+    <div class="container">
+      <div class="tab-content">
+
+        <!-- All Plans -->
+        <div class="tab-pane fade show active" id="all">
+          <div class="row g-5">
+
+            <!-- Plan 1: Fat Loss -->
+            <div class="col-md-6 col-lg-4">
+              <div class="diet-card">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800" class="diet-img" alt="Healthy salad">
+                <div class="p-4">
+                  <h4 class="fw-bold">28-Day Fat Burner</h4>
+                  <p class="text-success fw-bold">Goal: Lose 4–8 kg</p>
+                  <p class="text-muted small">High protein • Low carb • Calorie deficit</p>
+                  <div class="macro-bar my-3">
+                    <div class="d-flex">
+                      <div class="macro-protein"></div>
+                      <div class="macro-carbs"></div>
+                      <div class="macro-fat"></div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between text-small mb-3">
+                    <span>Protein 40%</span>
+                    <span>Carbs 35%</span>
+                    <span>Fat 25%</span>
+                  </div>
+                  <a href="#" class="btn btn-primary w-100 rounded-pill">Download PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plan 2: Muscle Gain -->
+            <div class="col-md-6 col-lg-4">
+              <div class="diet-card">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800" class="diet-img" alt="Chicken rice">
+                <div class="p-4">
+                  <h4 class="fw-bold">Muscle Builder 500</h4>
+                  <p class="text-warning fw-bold">Goal: Gain 0.5–1 kg muscle</p>
+                  <p class="text-muted small">Calorie surplus • High protein</p>
+                  <div class="macro-bar my-3">
+                    <div class="d-flex"><div style="width:45%; background:#10b981;"></div><div style="width:40%; background:#f59e0b;"></div><div style="width:15%; background:#3b82f6;"></div></div>
+                  </div>
+                  <div class="d-flex justify-content-between text-small mb-3">
+                    <span>Protein 45%</span>
+                    <span>Carbs 40%</span>
+                    <span>Fat 15%</span>
+                  </div>
+                  <a href="#" class="btn btn-primary w-100 rounded-pill">Download PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plan 3: Vegetarian -->
+            <div class="col-md-6 col-lg-4">
+              <div class="diet-card">
+                <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?q=80&w=800" class="diet-img" alt="Veggie bowl">
+                <div class="p-4">
+                  <h4 class="fw-bold">Vegan Power Plan</h4>
+                  <p class="text-success fw-bold">100% Plant-Based</p>
+                  <p class="text-muted small">Complete protein • Balanced macros</p>
+                  <div class="macro-bar my-3">
+                    <div class="d-flex"><div style="width:35%; background:#10b981;"></div><div style="width:45%; background:#f59e0b;"></div><div style="width:20%; background:#3b82f6;"></div></div>
+                  </div>
+                  <div class="d-flex justify-content-between text-small mb-3">
+                    <span>Protein 35%</span>
+                    <span>Carbs 45%</span>
+                    <span>Fat 20%</span>
+                  </div>
+                  <a href="#" class="btn btn-primary w-100 rounded-pill">Download PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- You can add 6–9 more plans easily -->
+          </div>
+
+          <!-- Sample Weekly Meal Preview -->
+          <div class="mt-5 p-5 bg-white rounded-4 shadow">
+            <h3 class="text-center mb-4 fw-bold">Sample Day (Fat Burner Plan)</h3>
+            <div class="table-responsive">
+              <table class="table meal-table text-center">
+                <thead>
+                  <tr>
+                    <th>Meal</th>
+                    <th>Food</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Breakfast</td><td>Oats + berries + whey</td><td>380</td><td>28g</td></tr>
+                  <tr><td>Snack</td><td>Greek yogurt + almonds</td><td>220</td><td>18g</td></tr>
+                  <tr><td>Lunch</td><td>Grilled chicken salad</td><td>450</td><td>42g</td></tr>
+                  <tr><td>Snack</td><td>Protein shake</td><td>160</td><td>25g</td></tr>
+                  <tr><td>Dinner</td><td>Salmon + quinoa + veggies</td><td>520</td><td>38g</td></tr>
+                  <tr class="fw-bold"><td>Total</td><td></td><td>1,730 kcal</td><td>151g protein</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-5 bg-light">
+    <div class="container text-center py-5">
+      <h2 class="display-5 fw-bold">Not sure which plan is right for you?</h2>
+      <p class="lead">Take our 60-second quiz and get your personalized diet instantly!</p>
+      <a href="contact.html" class="btn btn-primary btn-lg px-5 mt-3 rounded-pill">Take Free Quiz</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 text-white">
+    <div class="container text-center">
+      <p class="mb-1 fs-5">© 2025 <strong>FitLife</strong> • Eat better. Live stronger.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>
